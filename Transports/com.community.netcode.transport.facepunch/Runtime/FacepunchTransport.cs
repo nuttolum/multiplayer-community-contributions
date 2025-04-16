@@ -160,6 +160,15 @@ namespace Netcode.Transports.Facepunch
             return NetworkEvent.Nothing;
         }
 
+        public SteamId GetSteamId(ulong client)
+        {
+            if (connectedClients.TryGetValue(client, out Client data))
+            {
+                return data.steamId;
+            }
+            return default;
+        }
+
         public override bool StartClient()
         {
             if (LogLevel <= LogLevel.Developer)
